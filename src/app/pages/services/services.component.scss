@@ -1,0 +1,136 @@
+.services-section {
+    padding: 60px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .section-header {
+        margin-bottom: 64px;
+        max-width: 800px;
+
+        .section-title {
+            font-size: 50px;
+            font-weight: 700;
+            line-height: 63px;
+            color: #002D56;
+            margin: 0;
+        }
+
+        .section-subtitle {
+            font-size: 20px;
+            color: #000000;
+            font-weight: 300;
+            font-family: Roboto;
+            line-height: 23.44px;
+            margin-top: 12px;
+        }
+    }
+
+    /* Services Grid */
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 64px 50px;
+        justify-content: center;
+        align-items: stretch;
+        max-width: 1100px;
+        margin: 0 auto;
+
+        /* Service Card */
+        .service-card {
+            width: 100%;
+            max-width: 320px;
+            height: 360px;
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: #F8FCFB;
+            text-align: left;
+
+            &:hover {
+                box-shadow: 8px 8px 0px rgba(42, 157, 143, 0.7);
+                transform: translate(-4px, -4px);
+            }
+
+            /* Image Wrapper */
+            .image-container {
+                position: relative;
+                width: 100%;
+                height: 120px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    width: 90px;
+                    height: 90px;
+                    transition: transform 0.6s ease;
+                }
+            }
+
+            /* Flip Effect on Hover */
+            &:hover .image-container img {
+                transform: rotateY(180deg);
+            }
+
+            /* Title */
+            h3 {
+                font-size: 22px;
+                font-weight: 700;
+                color: #002D56;
+                margin: 12px 0;
+            }
+
+            /* Description */
+            p {
+                font-size: 16px;
+                font-weight: 300;
+                color: #000000;
+                line-height: 20px;
+                margin-bottom: 12px;
+            }
+
+            /* Read More Link */
+            .read-more {
+                color: #007bff;
+                font-size: 16px;
+                text-decoration: none;
+                font-weight: bold;
+                align-self: flex-start;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    /* ✅ Tablet View */
+    @media (max-width: 992px) {
+        .services-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+    }
+
+    /* ✅ Mobile View */
+    @media (max-width: 768px) {
+        .services-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            max-width: 100%;
+        }
+    }
+}

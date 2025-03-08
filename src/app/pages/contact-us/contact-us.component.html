@@ -1,0 +1,58 @@
+<section class="contact-section">
+    <!-- Left Side: Form -->
+    <div class="left-content">
+        <div class="regular m-0 color-gray">Buildabox</div>
+        <h2 class="m-0">Let's build something great</h2>
+        <p>Pellentesque lorem augue, fermentum nec nibh et, fringilla sollicitudin orci.</p>
+
+        <form class="gap-32" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+            <div class="input-group">
+              <input type="text" formControlName="name" placeholder="Name" required>
+              <input type="email" formControlName="email" placeholder="Enter your email" required>
+            </div>
+            <textarea formControlName="message" placeholder="Enter your message" required></textarea>
+          
+            <div class="terms-text">
+              All fields are required. By sending the form you agree to the
+              <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>.
+            </div>
+          
+            <button type="submit" class="send-button" [disabled]="contactForm.invalid">
+              Send Message <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </form>          
+    </div>
+
+    <!-- Right Side: Contact Info + Map -->
+    <div class="right-content">
+        <div class="contact-details">
+            <div class="info-box">
+                <div class="icon-container">
+                    <img src="assets/images/envelope-circle-check.svg" alt="Envelope Icon">
+                </div>
+                <div class="info-content">
+                    <strong>Say hello</strong>
+                    <p>Phone: 0413 772 510</p>
+                    <p>Fax: 0413 772 510</p>
+                    <p>Email: <a href="mailto:info@buildabox.com">info&#64;buildabox.com</a></p>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <div class="icon-container">
+                    <img src="assets/images/location-dot.svg" alt="Location Icon">
+                </div>
+                <div class="info-content">
+                    <strong>Contact info</strong>
+                    <p>Level 13, 2 Elizabeth St,</p>
+                    <p>Melbourne, Victoria 3000,</p>
+                    <p>Australia</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <img src="assets/images/map.svg" alt="Map Location">
+        </div>
+    </div>
+</section>

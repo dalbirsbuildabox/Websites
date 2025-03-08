@@ -1,0 +1,35 @@
+<header class="navbar">
+  <div class="container-custom">
+    <!-- Logo -->
+    <div class="logo">
+      <img src="assets/images/brand-logo.svg" alt="Buildabox Logo" />
+    </div>
+
+    <!-- 🔹 Desktop Navigation (Always Visible) -->
+    <nav class="navigation-section">
+      <ul class="nav-links">
+        <li><a routerLink="/home" routerLinkActive="active" class="nav-item">Home</a></li>
+        <li><a routerLink="/services" routerLinkActive="active" class="nav-item">Services</a></li>
+        <li><a routerLink="/about" routerLinkActive="active" class="nav-item">About Us</a></li>
+      </ul>
+    </nav>
+
+    <!-- 🔹 Hamburger Menu Button for Mobile -->
+    <button class="menu-toggle" (click)="toggleMenu()">
+      ☰
+    </button>
+
+    <!-- 🔹 Overlay -->
+    <div class="overlay" [class.show]="menuOpen" (click)="closeMenu()"></div>
+
+    <!-- 🔹 Sidebar Navigation (Only Mobile) -->
+    <nav class="mobile-menu" [class.show]="menuOpen">
+      <button class="close-btn" (click)="closeMenu()">×</button>
+      <ul class="nav-links">
+        <li><a routerLink="/home" routerLinkActive="active" class="nav-item" (click)="closeMenu()">Home</a></li>
+        <li><a routerLink="/services" routerLinkActive="active" class="nav-item" (click)="closeMenu()">Services</a></li>
+        <li><a routerLink="/about" routerLinkActive="active" class="nav-item" (click)="closeMenu()">About Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
