@@ -1,17 +1,23 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { SesService } from '../../services/ses.service';
 
 @Component({
   selector: 'app-contact-us',
-  imports: [ReactiveFormsModule],
+  standalone: true,
   templateUrl: './contact-us.component.html',
-  styleUrl: './contact-us.component.scss'
+  styleUrl: './contact-us.component.scss',
+  imports: [ReactiveFormsModule],
 })
 export class ContactUsComponent {
   contactForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private sesService: SesService) {
+  constructor(
+    private fb: FormBuilder, 
+    private sesService: SesService, 
+    private toastr: ToastrService
+  ) {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -25,11 +31,11 @@ export class ContactUsComponent {
       const subject = `New Contact Form Submission from ${name}`;
       try {
         await this.sesService.sendEmail(email, subject, message);
-        alert('Email sent successfully!');
+        this.toastr.success('Email sent successfully!', 'Success');
         this.contactForm.reset();
       } catch (error) {
         console.error('Error sending email:', error);
-        alert('Failed to send email. Please try again.');
+        this.toastr.error('Failed to send email. Please try again.', 'Error');
       }
     }
   }
