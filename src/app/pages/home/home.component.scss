@@ -50,12 +50,9 @@
         border: none;
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 12px;
+        justify-content: center;
         transition: all 0.3s ease-in-out;
-
-        i {
-            font-size: 22px;
-        }
 
         &:hover {
             background-color: #26735F;
