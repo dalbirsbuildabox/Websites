@@ -14,8 +14,8 @@ export class ContactUsComponent {
   contactForm: FormGroup;
 
   constructor(
-    private fb: FormBuilder, 
-    private sesService: SesService, 
+    private fb: FormBuilder,
+    private sesService: SesService,
     private toastr: ToastrService
   ) {
     this.contactForm = this.fb.group({
@@ -29,13 +29,18 @@ export class ContactUsComponent {
     if (this.contactForm.valid) {
       const { name, email, message } = this.contactForm.value;
       const subject = `New Contact Form Submission from ${name}`;
+      const formattedMessage = `You have received a new message from your website contact form.\n\n
+        Name: ${name}\n
+        Email: ${email}\n
+        Message: ${message}\n`;
+
       try {
-        await this.sesService.sendEmail(email, subject, message);
-        this.toastr.success('Email sent successfully!', 'Success');
+        await this.sesService.sendEmail(subject, formattedMessage);
+        this.toastr.success('Your message has been sent!', 'Success');
         this.contactForm.reset();
       } catch (error) {
         console.error('Error sending email:', error);
-        this.toastr.error('Failed to send email. Please try again.', 'Error');
+        this.toastr.error('Failed to send your message. Please try again.', 'Error');
       }
     }
   }

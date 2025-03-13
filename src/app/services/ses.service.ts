@@ -18,14 +18,16 @@ export class SesService {
     });
   }
 
-  async sendEmail(toEmail: string, subject: string, message: string) {
+  async sendEmail(subject: string, message: string) {
+    const websiteOwnerEmail = environment.senderEmail; // Your verified email
+
     const params = {
-      Destination: { ToAddresses: [toEmail] },
+      Destination: { ToAddresses: [websiteOwnerEmail] }, // Send to the website owner
       Message: {
         Body: { Text: { Data: message } },
         Subject: { Data: subject },
       },
-      Source: environment.senderEmail,
+      Source: websiteOwnerEmail, // Must be a verified email
     };
 
     try {
